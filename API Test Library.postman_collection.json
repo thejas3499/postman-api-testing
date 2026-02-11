@@ -1,0 +1,212 @@
+{
+  "info": {
+    "_postman_id": "a397802a-fe26-401d-8d10-cf9b57fa511d",
+    "name": "API Test Library",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "35388203",
+    "_collection_link": "https://go.postman.co/collection/35388203-a397802a-fe26-401d-8d10-cf9b57fa511d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/books",
+          "protocol": "https",
+          "host": [
+            "library-api",
+            "postmanlabs",
+            "com"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FilterBooks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BaseURL}}/books?genre=computers&checkedOut=false",
+          "host": [
+            "{{BaseURL}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "genre",
+              "value": "computers"
+            },
+            {
+              "key": "checkedOut",
+              "value": "false",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Path Parameters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.github.com/users/thejas3499",
+          "protocol": "https",
+          "host": [
+            "api",
+            "github",
+            "com"
+          ],
+          "path": [
+            "users",
+            "thejas3499"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Multi Path Parameter",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Get Book by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/books/:id",
+          "protocol": "https",
+          "host": [
+            "library-api",
+            "postmanlabs",
+            "com"
+          ],
+          "path": [
+            "books",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "c02e55aa-e4d4-42fc-a2c2-64eca4e662c4"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post your own Book",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const id = pm.response.json.id;\r",
+              "pm.collectionVariables.set(\"bookId\",id);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            },
+            {
+              "key": "value",
+              "value": "postmanrulz",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "api-key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "   {\r\n        \"id\": \"54cea925-53c7-4836-ad40-9ee5d2tk23481j\",\r\n        \"title\": \"Hands On Postman API-6\",\r\n        \"author\": \"Thejas\",\r\n        \"genre\": \"Computers\",\r\n        \"yearPublished\": 2026\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/books",
+          "protocol": "https",
+          "host": [
+            "library-api",
+            "postmanlabs",
+            "com"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BaseURL",
+      "value": ""
+    },
+    {
+      "key": "bookId",
+      "value": ""
+    }
+  ]
+}
